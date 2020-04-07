@@ -1,0 +1,56 @@
+package ma.ac.inpt.web;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import ma.ac.inpt.dao.CategoryRepository;
+import ma.ac.inpt.entities.Category;
+import ma.ac.inpt.models.CatLivre;
+import ma.ac.inpt.models.Categorie;
+import ma.ac.inpt.models.ListCat;
+
+@RestController
+public class CategoryController {
+	@Autowired
+    private RestTemplate restTemplate;
+	
+	@Autowired
+	CategoryRepository categoryRepository;
+	
+	List<String> Ids;
+	
+	@RequestMapping(value = "/categories", method = RequestMethod.GET)
+	public List<Category> getCategories(){
+		return categoryRepository.findAll();
+	}
+	@RequestMapping(value = "/categories/{category}", method = RequestMethod.GET)
+	public Category getCategory(@PathVariable String category){
+		return categoryRepository.findById(category).get();
+	}
+	
+	@RequestMapping(value = "/categoriess", method = RequestMethod.GET)
+	public List<Categorie> getCategoriesAndLivres(){
+		ListCat cat =new ListCat();
+		cat.setListcat(categoryRepository.findAll()); ;
+		return cat.getListcat().stream()
+                .map(c -> {
+                     CatLivre catLiv = restTemplate.getForObject("http://localhost:8082/livresByCat/" + c.getId(), CatLivre.class);
+                    return new Categorie(c.getId(), c.getName(), catLiv.getLivres());
+                })
+                .collect(Collectors.toList());
+	}
+	@RequestMapping(value = "/categoriess/{category}", method = RequestMethod.GET)
+	public Category getCategoryAndLivres(@PathVariable String category){
+		return categoryRepository.findById(category).get();
+	}
+	
+
+}

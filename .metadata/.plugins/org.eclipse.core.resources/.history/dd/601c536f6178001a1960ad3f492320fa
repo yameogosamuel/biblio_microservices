@@ -1,0 +1,5 @@
+package ma.ac.inpt.models;
+
+public class Categorie {
+
+}

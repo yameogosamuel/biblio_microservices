@@ -1,0 +1,28 @@
+package ma.ac.inpt.web;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import ma.ac.inpt.dao.CategoryRepository;
+import ma.ac.inpt.entities.Category;
+
+@RestController
+public class CategoryController {
+	
+	@Autowired
+	CategoryRepository categoryRepository;
+	
+	public List<Category> getCategories(){
+		
+		return null;
+	}
+	
+	public Category getCategory(){
+		
+		return null;
+	}
+	
+
+}

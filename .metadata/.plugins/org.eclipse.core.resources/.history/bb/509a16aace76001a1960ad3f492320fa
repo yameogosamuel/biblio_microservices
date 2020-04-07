@@ -1,0 +1,9 @@
+package ma.ac.inpt.entities;
+
+import java.util.Collection;
+
+public class MappingCatLiv {
+	private String idCat;
+	private Collection<Livre> livres;
+
+}

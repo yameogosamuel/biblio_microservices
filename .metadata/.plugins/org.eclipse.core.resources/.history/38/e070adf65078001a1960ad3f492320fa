@@ -1,0 +1,11 @@
+package ma.ac.inpt.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+import ma.ac.inpt.entities.MappingCatLiv;
+
+@RepositoryRestResource
+public interface MappingCatLivRepository extends JpaRepository<MappingCatLiv, String>{
+
+}

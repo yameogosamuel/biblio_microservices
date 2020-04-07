@@ -1,0 +1,51 @@
+package ma.ac.inpt;
+
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import ma.ac.inpt.dao.LivreRepository;
+import ma.ac.inpt.dao.MappingCatLivRepository;
+import ma.ac.inpt.entities.Livre;
+import ma.ac.inpt.entities.MappingCatLiv;
+
+@SpringBootApplication
+public class LivresApplication implements CommandLineRunner{
+	
+	@Autowired
+	MappingCatLivRepository mappingCatLivRepository;
+	@Autowired
+	LivreRepository livreRepository;
+	public static void main(String[] args) {
+		SpringApplication.run(LivresApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		          MappingCatLiv c1= new MappingCatLiv("C1",null);
+		          MappingCatLiv c2= new MappingCatLiv("C2",null);
+		          MappingCatLiv c3= new MappingCatLiv("C3",null);
+		          MappingCatLiv c4= new MappingCatLiv("C4",null);
+		          MappingCatLiv c5= new MappingCatLiv("C5",null);
+		          mappingCatLivRepository.save(c1);
+		          mappingCatLivRepository.save(c2); mappingCatLivRepository.save(c3);
+		          mappingCatLivRepository.save(c4); mappingCatLivRepository.save(c5);
+				  
+				  livreRepository.save(new Livre(1L,"Tribal","Samuel",new Date(), 123,c1));
+				  livreRepository.save(new Livre(2L,"Rebelle","Yaméogo",new Date(), 321, c1));
+				  livreRepository.save(new Livre(3L,"La belle","Paul",new Date(),54, c2));
+				  livreRepository.save(new Livre(4L,"Ô temps","Yaméogo",new Date(),340, c2));
+				  livreRepository.save(new Livre(5L,"Oscar","Nathalie",new Date(),78, c3));
+				  livreRepository.save(new Livre(6L,"Guere Guerre","Augustin",new Date(),98, c3));
+				  livreRepository.save(new Livre(7L,"Mousso","FratMat",new Date(),74, c4));
+				  livreRepository.save(new Livre(8L,"Go mag","Sidwaya",new Date(),643, c4));
+				  livreRepository.save(new Livre(9L,"Ssport","Sport Mag",new Date(),48, c5));
+				  livreRepository.save(new Livre(10L,"Soir info","FPI",new Date(),32, c5));
+				 
+		
+	}
+
+}

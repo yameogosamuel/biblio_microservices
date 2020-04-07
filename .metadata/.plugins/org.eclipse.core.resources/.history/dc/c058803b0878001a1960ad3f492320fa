@@ -1,0 +1,5 @@
+package ma.ac.inpt.web;
+
+public class CategoryController {
+
+}

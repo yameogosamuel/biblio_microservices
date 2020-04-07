@@ -1,0 +1,31 @@
+package ma.ac.inpt.web;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ma.ac.inpt.dao.LivreRepository;
+import ma.ac.inpt.dao.MappingCatLivRepository;
+import ma.ac.inpt.entities.Livre;
+import ma.ac.inpt.entities.MappingCatLiv;
+
+public class LivreController {
+	
+	@Autowired
+	LivreRepository livreRepository;
+	@Autowired
+	MappingCatLivRepository mappingCatLivRepository;
+	
+	public List<Livre> getLivres(){
+		return null;
+	}
+	
+	public Livre getLivre(Long id){
+		return null;
+	}
+	
+	public List<MappingCatLiv> getLivresByCat(){
+		return null;
+	}
+
+}

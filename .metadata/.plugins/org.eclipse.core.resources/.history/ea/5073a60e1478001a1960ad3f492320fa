@@ -1,0 +1,30 @@
+package ma.ac.inpt.web;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import ma.ac.inpt.dao.CategoryRepository;
+import ma.ac.inpt.entities.Category;
+
+@RestController
+public class CategoryController {
+	
+	@Autowired
+	CategoryRepository categoryRepository;
+	
+	@RequestMapping(value = "/categories", method = RequestMethod.GET)
+	public List<Category> getCategories(){
+		return categoryRepository.findAll();
+	}
+	@RequestMapping(value = "/categories/{id}", method = RequestMethod.GET)
+	public Category getCategory(@PathVariable String category){
+		return categoryRepository.findById(category).get();
+	}
+	
+
+}

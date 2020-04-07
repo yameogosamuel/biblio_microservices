@@ -1,0 +1,49 @@
+package ma.ac.inpt.web;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import ma.ac.inpt.dao.CategoryRepository;
+import ma.ac.inpt.entities.Category;
+import ma.ac.inpt.models.Categorie;
+
+@RestController
+public class CategoryController {
+	@Autowired
+    private RestTemplate restTemplate;
+	
+	@Autowired
+	CategoryRepository categoryRepository;
+	
+	@RequestMapping(value = "/categoriesId", method = RequestMethod.GET)
+	public List<String> getIds(){
+		return categoryRepository.getId();
+	}
+	
+	@RequestMapping(value = "/categories", method = RequestMethod.GET)
+	public List<Category> getCategories(){
+		return categoryRepository.findAll();
+	}
+	@RequestMapping(value = "/categories/{category}", method = RequestMethod.GET)
+	public Category getCategory(@PathVariable String category){
+		return categoryRepository.findById(category).get();
+	}
+	
+	@RequestMapping(value = "/categoriess", method = RequestMethod.GET)
+	public List<Categorie> getCategoriesAndLivres(){
+		Categorie categories = restTemplate.getForObject("http://ratings-data-service/ratingsdata/user/" + userId, UserRating.class);
+		return null;
+	}
+	@RequestMapping(value = "/categories/{category}", method = RequestMethod.GET)
+	public Category getCategory(@PathVariable String category){
+		return categoryRepository.findById(category).get();
+	}
+	
+
+}

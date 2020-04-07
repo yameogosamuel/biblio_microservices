@@ -1,0 +1,38 @@
+package ma.ac.inpt;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.env.CommandLinePropertySource;
+
+import ma.ac.inpt.entities.MappingCatLiv;
+
+@SpringBootApplication
+public class LivresApplication implements CommandLineRunner{
+
+	public static void main(String[] args) {
+		SpringApplication.run(LivresApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		          MappingCatLiv c1= new MappingCatLiv("C1",null);
+		          categoryRepository.save(c1);
+				  categoryRepository.save(c2); categoryRepository.save(c3);
+				  categoryRepository.save(c4); categoryRepository.save(c5);
+				  
+				  livreRepository.save(new Livre(1L,"Tribal","Samuel",new Date(), c1));
+				  livreRepository.save(new Livre(2L,"Rebelle","Yaméogo",new Date(), c1));
+				  livreRepository.save(new Livre(3L,"La belle","Paul",new Date(), c2));
+				  livreRepository.save(new Livre(4L,"Ô temps","Yaméogo",new Date(), c2));
+				  livreRepository.save(new Livre(5L,"Oscar","Nathalie",new Date(), c3));
+				  livreRepository.save(new Livre(6L,"Guere Guerre","Augustin",new Date(), c3));
+				  livreRepository.save(new Livre(7L,"Mousso","FratMat",new Date(), c4));
+				  livreRepository.save(new Livre(8L,"Go mag","Sidwaya",new Date(), c4));
+				  livreRepository.save(new Livre(9L,"Ssport","Sport Mag",new Date(), c5));
+				  livreRepository.save(new Livre(10L,"Soir info","FPI",new Date(), c5));
+				 
+		
+	}
+
+}

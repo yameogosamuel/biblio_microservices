@@ -1,0 +1,18 @@
+package ma.ac.inpt.entities;
+
+import java.util.Collection;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@Entity @NoArgsConstructor @AllArgsConstructor
+public class MappingCatLiv {
+	@Id
+	private String idCat;
+	private Collection<Livre> livres;
+
+}

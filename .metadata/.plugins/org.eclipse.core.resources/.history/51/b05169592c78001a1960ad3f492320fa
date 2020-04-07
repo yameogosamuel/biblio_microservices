@@ -1,0 +1,10 @@
+package ma.ac.inpt.web;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class LivreController {
+	
+	@Autowired
+	
+
+}
